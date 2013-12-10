@@ -12,9 +12,9 @@ $field_map = array(
 	'herbarium' => array(
 			'x','y','w','h',
 			'country',
-			'state_province',
-			'country',
-			'scientific_name',
+			'stateProvince',
+			'county',
+			'scientificName',
 			'location',
 			'habitat',
 			'collector',
@@ -23,7 +23,7 @@ $field_map = array(
 			'year'),
 	'calbug' => array(
 			'country',
-			'state_province',
+			'stateProvince',
 			'county',
 			'locality',
 			'month',
@@ -45,7 +45,7 @@ $field_map = array(
 			'year'),
 	'macrofungi' => array(
 			'country',
-			'state_province',
+			'stateProvince',
 			'county',
 			'locality',
 			'month',
@@ -60,8 +60,7 @@ if (empty($field_map[$path])) {
 		echo "<a href='./{$a_path}'>{$a_path}</a><br/>";
 	}
 } else {
-	array_unshift($field_map[$path],'url');
-	array_unshift($field_map[$path],'user');
+	array_unshift($field_map[$path],'source');
 
 	echo "<h1>{$path}</h1>";
 
