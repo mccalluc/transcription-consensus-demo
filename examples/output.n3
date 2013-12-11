@@ -1,0 +1,32 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dwc: <http://rs.tdwg.org/dwc/terms/> .
+@prefix dwcFP: <http://filteredpush.org/ontologies/oa/dwcFP#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+
+<http://filteredpush.org/ontologies/annotation/crowd-sourcing-example> 
+	a oa:Annotation ;
+	oa:motivatedBy <http://filteredpush.org/ontologies/oa/oad#transcribing> ;
+	oa:annotatedBy [
+		a foaf:Agent ;
+		foaf:name "John Doe" ] ;
+	oa:hasBody [
+		a dwcFP:Occurrence ;
+		dwcFP:hasCollectingEvent [
+			a dwcFP:Event ;
+			dwcFP:hasLocality [ 
+				a dwcFP:Location ;
+				dwc:country "US" ;
+				dwc:county "Middlesex" ;
+				dwc:stateProvince "Massachusetts" ;
+				dwc:verbatimLocality "Garden in front of HUH" ] ;
+			dwc:day "1" ;
+			dwc:month "12" ;
+			dwc:year "2013" ] ;
+	oa:hasTarget [
+		a oa:SpecificResource ;
+		oa:hasSource <http://example.org/fungi/1.jpg> ;
+		oa:hasSelector [
+			a oa:FragmentSelector ;
+			dcterms:conformsTo <http://www.w3.org/TR/media-frags/> ;
+			rdf:value "#xywh=50,50,640,480" ] ] .

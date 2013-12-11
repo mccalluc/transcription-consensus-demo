@@ -1,0 +1,13 @@
+{
+	"target":{
+		"source":"http:\/\/example.edu\/fungi\/1.jpg"},
+	"body":{
+		"country":"US",
+		"stateProvince":"Massachusetts",
+		"county":"Middlesex",
+		"month":"12",
+		"day":"11",
+		"year":"2012",
+		"verbatimLocality":"Garden in front of HUH"},
+	"annotator_name":"John Doe"}
+
