@@ -467,9 +467,9 @@
     <tspan x="1160" y="540">... and it's unclear how well this will scale.</tspan>
   </text>
   <text font-size="25.6705" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="1160" y="700">
-    <tspan x="1160" y="700">http://www.openannotation.org/spec/core/</tspan>
+    <tspan x="1160" y="700"><a xlink:href="http://www.openannotation.org/spec/core">http://www.openannotation.org/spec/core/</a></tspan>
   </text>
   <text font-size="25.6705" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="1160" y="760">
-    <tspan x="1160" y="760">http://wiki.filteredpush.org/</tspan>
+    <tspan x="1160" y="760"><a xlink:href="http://wiki.filteredpush.org/">http://wiki.filteredpush.org/</a></tspan>
   </text>
 </svg>
