@@ -80,7 +80,7 @@ if (isset($consenting) && isset($dissenting)) {
 $json = json_encode($annotation); // JSON_PRETTY_PRINT available in 5.4
 
 $url = 'http://fp1.acis.ufl.edu:8080/clientHelper/insert'
-	. ( isset($_POST['consenting'])
+	. ( isset($consenting)
 		? 'Consensus'
 		: 'Transcribing' )
 	. 'Annotation/';
