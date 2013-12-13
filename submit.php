@@ -5,8 +5,12 @@
 $target = array();
 
 if (!empty($_POST['source'])) {
-	$target['source'] = $_POST['source'];
-	unset($_POST['source']);
+	if (strpos($_POST['source'],'http://') === 0) {
+		$target['source'] = $_POST['source'];
+		unset($_POST['source']);
+	} else {
+		die("source must begin with 'http://'.");
+	}
 } else {
 	die("source is required.");
 }
@@ -43,6 +47,15 @@ foreach ($map as $old => $new) {
 // TODO: handle date range as ISO eventDate.
 // TODO: handle ornith record_*
 
+if (isset($_POST['consenting'])) {
+	$consenting = explode(' ',$_POST['consenting']);
+	unset($_POST['consenting']);
+}
+if (isset($_POST['dissenting'])) {
+	$dissenting = explode(' ',$_POST['dissenting']);
+	unset($_POST['dissenting']);
+}
+
 foreach($_POST as $key => $value) {
 	$body[$key] = $value;
 }
@@ -55,20 +68,25 @@ $annotation = array(
 	'annotator_name' => 'demo script'
 );
 
+if (isset($consenting) && isset($dissenting)) {
+	$annotation['evidence'] = array(
+		'consenting' => $consenting,
+		'dissenting' => $dissenting
+	);
+}
+
 // and submit:
 
 $json = json_encode($annotation); // JSON_PRETTY_PRINT available in 5.4
 
-$url = 'http://fp1.acis.ufl.edu:8080/clientHelper/insertTranscribingAnnotation/';
+$url = 'http://fp1.acis.ufl.edu:8080/clientHelper/insertConsensusAnnotation/';
 
-$json_html = htmlspecialchars($json);
-$url_html = htmlspecialchars($url);
-
-?><html><body>
-POSTing to this URL: <code><?php echo $url_html; ?></code><br/>
-this JSON: <code><?php echo $json_html; ?></code><br/>
-result:
+?><!DOCTYPE html><html><body>
+POSTing to this URL: <code><?php echo htmlspecialchars($url); ?></code><br/>
+this JSON: <code><?php echo htmlspecialchars($json); ?></code><br/>
 <?php
+
+// un-MVC, but this has failed sometimes.
 
 $options = array(
     'http' => array(
@@ -78,7 +96,22 @@ $options = array(
     ),
 );
 $context  = stream_context_create($options);
-$result = file_get_contents($url, false, $context);
-echo htmlspecialchars($result);
+$rdf_xml = file_get_contents($url, false, $context);
+
+// XXX: THIS IS HORRIBLE.
+$matches = array();
+preg_match('!http://filteredpush.org/ontologies/annotation/[^"]+!',$rdf_xml,$matches);
+$anno_url = $matches[0];
 ?>
+created new annotation: <code><?php echo htmlspecialchars($anno_url); ?></code><br/>
+view as: <form method='POST' style='display:inline' target='_blank'>
+<input type='hidden' name='content' value='<?php echo htmlspecialchars($rdf_xml); ?>'></input>
+<?php
+foreach(array('rdfa','microdata','pretty-xml','n3','rdf-json-pretty','json-ld') as $format){
+	$url = "http://rdf-translator.appspot.com/convert/xml/{$format}/content";
+	echo "<input type='submit' value='{$format}' formaction='{$url}'></input>";
+}
+?>
+</form></br>
+or as rdf-xml: <code><?php echo htmlspecialchars($rdf_xml); ?></code><br/>
 </body></html>
