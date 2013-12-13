@@ -81,13 +81,6 @@ $json = json_encode($annotation); // JSON_PRETTY_PRINT available in 5.4
 
 $url = 'http://fp1.acis.ufl.edu:8080/clientHelper/insertConsensusAnnotation/';
 
-?><!DOCTYPE html><html><body>
-POSTing to this URL: <code><?php echo htmlspecialchars($url); ?></code><br/>
-this JSON: <code><?php echo htmlspecialchars($json); ?></code><br/>
-<?php
-
-// un-MVC, but this has failed sometimes.
-
 $options = array(
     'http' => array(
         'header'  => "Content-type: application/json\r\n",
@@ -102,12 +95,15 @@ $rdf_xml = file_get_contents($url, false, $context);
 $matches = array();
 preg_match('!http://filteredpush.org/ontologies/annotation/[^"]+!',$rdf_xml,$matches);
 $anno_url = $matches[0];
-?>
+
+?><!DOCTYPE html><html><body>
+POSTing to this URL: <code><?php echo htmlspecialchars($url); ?></code><br/>
+this JSON: <code><?php echo htmlspecialchars($json); ?></code><br/>
 created new annotation: <code><?php echo htmlspecialchars($anno_url); ?></code><br/>
 view as: <form method='POST' style='display:inline' target='_blank'>
 <input type='hidden' name='content' value='<?php echo htmlspecialchars($rdf_xml); ?>'></input>
 <?php
-foreach(array('rdfa','microdata','pretty-xml','n3','rdf-json-pretty','json-ld') as $format){
+foreach(array('n3','rdf-json-pretty','json-ld','rdfa','microdata','pretty-xml') as $format){
 	$url = "http://rdf-translator.appspot.com/convert/xml/{$format}/content";
 	echo "<input type='submit' value='{$format}' formaction='{$url}'></input>";
 }
