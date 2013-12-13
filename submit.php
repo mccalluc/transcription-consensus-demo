@@ -48,12 +48,18 @@ foreach ($map as $old => $new) {
 // TODO: handle ornith record_*
 
 if (isset($_POST['consenting'])) {
-	$consenting = explode(' ',$_POST['consenting']);
-	unset($_POST['consenting']);
+        $consenting = explode(' ',$_POST['consenting']);
+        if (count($consenting)==1 && $consenting[0]=='') {
+                $consenting=array();
+        }
+        unset($_POST['consenting']);
 }
 if (isset($_POST['dissenting'])) {
-	$dissenting = explode(' ',$_POST['dissenting']);
-	unset($_POST['dissenting']);
+        $dissenting = explode(' ',$_POST['dissenting']);
+        if (count($dissenting)==1 && $dissenting[0]=='') {
+                $dissenting=array();
+        }
+        unset($_POST['dissenting']);
 }
 
 foreach($_POST as $key => $value) {
