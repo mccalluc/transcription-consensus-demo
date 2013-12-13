@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-<svg width="26cm" height="12cm" viewBox="237 77 1587 725" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg viewBox="237 77 1587 725" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <rect style="fill: none; fill-opacity:0; stroke-width: 4; stroke-dasharray: 20; stroke: #7f7f7f" x="240" y="360" width="420" height="440"/>
   <rect style="fill: none; fill-opacity:0; stroke-width: 4; stroke-dasharray: 20; stroke: #7f7f7f" x="240" y="80" width="840" height="260"/>
   <rect style="fill: none; fill-opacity:0; stroke-width: 4; stroke-dasharray: 20; stroke: #7f7f7f" x="680" y="360" width="400" height="440"/>
@@ -466,10 +466,13 @@
   <text font-size="25.6705" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="1160" y="540">
     <tspan x="1160" y="540">... and it's unclear how well this will scale.</tspan>
   </text>
-  <text font-size="25.6705" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="1160" y="700">
+  <text font-size="25.6705" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;text-decoration:underline;font-weight:normal" x="1160" y="640">
+    <tspan x="1160" y="640"><a xlink:href="http://fp1.acis.ufl.edu/transcription-consensus-demo/form.php/">A demo based on NfN</a></tspan>
+  </text>
+  <text font-size="25.6705" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;text-decoration:underline;font-weight:normal" x="1160" y="700">
     <tspan x="1160" y="700"><a xlink:href="http://www.openannotation.org/spec/core">http://www.openannotation.org/spec/core/</a></tspan>
   </text>
-  <text font-size="25.6705" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="1160" y="760">
+  <text font-size="25.6705" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;text-decoration:underline;font-weight:normal" x="1160" y="760">
     <tspan x="1160" y="760"><a xlink:href="http://wiki.filteredpush.org/">http://wiki.filteredpush.org/</a></tspan>
   </text>
 </svg>
